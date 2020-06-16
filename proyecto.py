@@ -49,7 +49,7 @@ def graficar(i): #Funcion que grafica en el canvas
     # En caso de que el campo de función NO este vacío:
     x,y=evaluarMetodo() #Evalua x y
     X,Y=np.meshgrid(x,y)
-    u,v = x,y #Hace una malla con los valores de x y para graficar el campo de direcciones
+    u,v = x,y 
     
     # Normalize the arrows:
     U = u / np.sqrt(u**2 + v**2);
