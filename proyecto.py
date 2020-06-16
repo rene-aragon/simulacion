@@ -48,11 +48,16 @@ def graficar(i): #Funcion que grafica en el canvas
     
     # En caso de que el campo de función NO este vacío:
     x,y=evaluarMetodo() #Evalua x y
-    u,v = np.meshgrid(x,y) #Hace una malla con los valores de x y para graficar el campo de direcciones
+    X,Y=np.meshgrid(x,y)
+    u,v = x,y 
     
+    # Normalize the arrows:
+    U = u / np.sqrt(u**2 + v**2);
+    V = v / np.sqrt(u**2 + v**2);
+
     ax1.clear() #Limpia la grafica
     
-    ax1.quiver(x,y,u,v) #Grafica el campo de direcciones
+    ax1.quiver(X,Y,U,V,units='width') #Grafica el campo de direcciones
     ax1.plot(x,y) #Grafica la funcion
     
     ax1.axhline(0, color="gray") #Establece el eje de las x en color gris
