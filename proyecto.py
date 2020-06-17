@@ -50,18 +50,17 @@ def graficar(i): #Funcion que grafica en el canvas
     x,y=evaluarMetodo() #Evalua x y
     X,Y=np.meshgrid(x,y)
     u,v = x,y 
-    
     # Normalize the arrows:
     U = u / np.sqrt(u**2 + v**2);
     V = v / np.sqrt(u**2 + v**2);
 
     ax1.clear() #Limpia la grafica
-    
     ax1.quiver(X,Y,U,V,units='width') #Grafica el campo de direcciones
     ax1.plot(x,y) #Grafica la funcion
-    
-    ax1.axhline(0, color="gray") #Establece el eje de las x en color gris
-    ax1.axvline(0, color="gray") #Establece el eje de las y en color gris
+    ax1.plot(float(a.get()),float(y0.get()),'ro')
+
+    #ax1.axhline(0, color="gray") #Establece el eje de las x en color gris
+    #ax1.axvline(0, color="gray") #Establece el eje de las y en color gris
     ani.event_source.stop() #Detiene la animación de graficado
     
 def represent():
@@ -78,8 +77,8 @@ def validarDatos():  #Esta función verifica que no haya campos vacíos
         return "ingresa un intervalo de fin"
     if(len(h.get()) == 0):
         return "ingresa un tamaño de paso"
-    if(len(M.get()) == 0):
-        return "ingresa un numero de subintervalos"
+   ## if(len(M.get()) == 0):
+        ##return "ingresa un numero de subintervalos"
     if(metodo.current() < 0):
         return "selecciona un metodo"  
     
@@ -129,8 +128,8 @@ b.grid(padx=5,row=3,column=4)
 h = tk.Entry(master)
 h.grid(padx=5,row=1,column=5)
 
-M = tk.Entry(master)
-M.grid(padx=5,row=3,column=5)
+##M = tk.Entry(master)
+##M.grid(padx=5,row=3,column=5)
 
 #Combobox (desplegable)
 metodo = ttk.Combobox(master,values=metodos.labels,state="readonly")
@@ -145,7 +144,7 @@ tk.Label(master,text="Valor inicial:").grid(row=0,column=1,columnspan=4)
 tk.Label(master,text="Tamano de paso").grid(row=0,column=5)
 tk.Label(master,text="Metodo de evaluacion").grid(row=0,column=6)
 tk.Label(master,text="Intervalo [a,b]").grid(row=2,column=1,columnspan=4)
-tk.Label(master,text="Subintervalos").grid(row=2,column=5)
+##tk.Label(master,text="Subintervalos").grid(row=2,column=5)
 tk.Label(master,text="a").grid(row=3,column=1)
 tk.Label(master,text="b").grid(row=3,column=3)
 
